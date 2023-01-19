@@ -51,7 +51,7 @@ public class GestorArboles {
 					eliminarArbol();
 					break;
 				case MODI_ARBOL:
-					System.out.println("tercera opcion seleccionada\n");
+					updateArbol();
 					break;
 				case SALIR:
 					System.out.println("ADIOS");
@@ -121,7 +121,7 @@ public class GestorArboles {
 			origen = sc.nextLine();
 
 			String sentenciaInsertar = "INSERT INTO arboles (nombre_comun, nombre_cientifico, habitat, altura, origen) VALUES ('"
-					+ nombre_comun + "'+'" + nombre_cientifico + "'+'" + habitat + "'+'" + altura + "'+'" + origen
+					+ nombre_comun + "','" + nombre_cientifico + "','" + habitat + "','" + altura + "','" + origen
 					+ "')";
 			st.execute(sentenciaInsertar);
 
@@ -148,6 +148,50 @@ public class GestorArboles {
 			
 			String sentenciaDelete = "DELETE FROM arboles WHERE id = ('"+id+"')";
 			st.execute(sentenciaDelete);
+
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void updateArbol() {
+
+		try {
+			
+			// UPDATE animales SET nombre='aaaa' WHERE id 2
+			// String sentenciaUpdate = "UPDATE animales SET nombre='elefante' WHERE id =
+			// 2";
+			// st.executeUpdate("sentenciaUpdate");
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
+			
+			Statement st = con.createStatement();
+			Scanner sc = new Scanner(System.in);
+
+			System.out.println("introduce el id del arbol que quieras modificar");
+			int id = Integer.parseInt(sc.nextLine());
+			System.out.println("introduce los nuevos datos que quieras darle");
+			System.out.println("introduce el nombre común del arbol");
+			String nombre_comun = sc.nextLine();
+			System.out.println("introduce el nombre científico del arbol");
+			String nombre_cientifico = sc.nextLine();
+			System.out.println("introduce el habitat del arbol");
+			String habitat = sc.nextLine();
+			System.out.println("introduce la altura en metros del arbol");
+			int altura = Integer.parseInt(sc.nextLine());
+			System.out.println("introduce el origen del arbol");
+			String origen = sc.nextLine();
+
+		    String sentenciaUpdate = "UPDATE arboles SET nombre_comun='"+nombre_comun+"' WHERE id ="+id+";"+
+		    						 "UPDATE arboles SET nombre_cientifico='"+nombre_cientifico+"' WHERE id ="+id+";"+
+		    						 "UPDATE arboles SET habitat='"+habitat+"'WHERE id ="+id+";"+
+		    						 "UPDATE arboles SET altura='"+altura+"' WHERE id ="+id+";"+
+		    						 "UPDATE arboles SET origen='"+origen+"' WHERE id ="+id+"";
+		    						 
+		    st.executeUpdate(sentenciaUpdate);
 
 			con.close();
 		} catch (SQLException e) {
