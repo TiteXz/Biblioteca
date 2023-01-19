@@ -185,6 +185,56 @@ public class GestorArboles {
 			System.out.println("introduce el origen del arbol");
 			String origen = sc.nextLine();
 
+		    String sentenciaUpdate ="UPDATE arboles SET nombre_comun='"+nombre_comun+"' WHERE id ="+id+"";
+		    st.executeUpdate(sentenciaUpdate);
+		    String sentenciaUpdate2 ="UPDATE arboles SET nombre_cientifico='"+nombre_cientifico+"' WHERE id ="+id+"";
+		    st.executeUpdate(sentenciaUpdate2);
+		    String sentenciaUpdate3 ="UPDATE arboles SET habitat='"+habitat+"'WHERE id ="+id+"";
+		    st.executeUpdate(sentenciaUpdate3);
+		    String sentenciaUpdate4 ="UPDATE arboles SET altura='"+altura+"' WHERE id ="+id+"";
+		    st.executeUpdate(sentenciaUpdate4);
+		    String sentenciaUpdate5 ="UPDATE arboles SET origen='"+origen+"' WHERE id ="+id+"";
+		    st.executeUpdate(sentenciaUpdate5);
+
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	private static void visualizarArbol() {
+
+		try {
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
+			
+			Statement st = con.createStatement();
+			Scanner sc = new Scanner(System.in);
+
+			// SELECT * FROM animales
+			// SELECT * FROM animales WHERE AAAA=AAAA
+			// String sentenciaSelect = "SELECT * FROM animales";
+			// ResultSet resultado = st.executeQuery(sentenciaSelect);
+			// while(resultado.next()) {
+			// System.out.println(resultado.getInt(1)+ " - " +resultado.getString(2));
+
+			
+			System.out.println("introduce el id del arbol que quieras modificar");
+			int id = Integer.parseInt(sc.nextLine());
+			System.out.println("introduce los nuevos datos que quieras darle");
+			System.out.println("introduce el nombre común del arbol");
+			String nombre_comun = sc.nextLine();
+			System.out.println("introduce el nombre científico del arbol");
+			String nombre_cientifico = sc.nextLine();
+			System.out.println("introduce el habitat del arbol");
+			String habitat = sc.nextLine();
+			System.out.println("introduce la altura en metros del arbol");
+			int altura = Integer.parseInt(sc.nextLine());
+			System.out.println("introduce el origen del arbol");
+			String origen = sc.nextLine();
+
 		    String sentenciaUpdate = "UPDATE arboles SET nombre_comun='"+nombre_comun+"' WHERE id ="+id+";"+
 		    						 "UPDATE arboles SET nombre_cientifico='"+nombre_cientifico+"' WHERE id ="+id+";"+
 		    						 "UPDATE arboles SET habitat='"+habitat+"'WHERE id ="+id+";"+
