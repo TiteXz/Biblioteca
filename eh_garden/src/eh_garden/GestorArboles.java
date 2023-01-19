@@ -12,20 +12,18 @@ public class GestorArboles {
 	private static final String BBDD = "gh_garden";
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "";
-	
-	public static void main(String[] args)  {
-		Scanner sc = new Scanner(System.in);
+
+	public static void main(String[] args) {
+
 		try {
-			
-			//System.out.println("introduce un nombre de animal");
-			//String nombreAnimal = sc.nextLine();
-			
+
+			// System.out.println("introduce un nombre de animal");
+			// String nombreAnimal = sc.nextLine();
+
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://"+HOST+"/"+BBDD, USERNAME, PASSWORD);
-			Statement st = con.createStatement();
-			
-			
-			//declaracion de constantes (final) para las opciones
+			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
+
+			// declaracion de constantes (final) para las opciones
 			final int INSER_ARBOL = 1;
 			final int ELIMINAR_ARBOL = 2;
 			final int MODI_ARBOL = 3;
@@ -47,22 +45,10 @@ public class GestorArboles {
 
 				switch (opcion_menu) {
 				case INSER_ARBOL:
-					System.out.println("introduce el nombre del arbol");
-					//String nombreAnimal = sc.nextLine();
-					String nomArbolComun = sc.nextLine();
-					
-//					//INSERT INTO animales (nombre) VALUES ( 'gato')
-					String sentenciaInsertar = "INSERT INTO arboles (nombreComun) VALUES ('"+nomArbolComun+"')";
-					st.execute(sentenciaInsertar);
+					insertarArbol();
 					break;
 				case ELIMINAR_ARBOL:
-					System.out.println("Introduce nombreComun del arbol que desees eliminar");
-					//String nombreAnimal = sc.nextLine();
-					nomArbolComun = sc.nextLine();
-					
-					//DELETE FROM animales WHERE nombre = 'aaaa'
-					String sentenciaDelete = "DELETE FROM arboles WHERE nombre = '"+nomArbolComun+"'";
-					st.execute(sentenciaDelete);
+					eliminarArbol();
 					break;
 				case MODI_ARBOL:
 					System.out.println("tercera opcion seleccionada\n");
@@ -76,38 +62,98 @@ public class GestorArboles {
 
 			} while (opcion_menu != SALIR);
 			scan.close();
-			
+
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		}
-		
-		
-		
-		con.close();
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}catch(ClassNotFoundException e) {
-		e.printStackTrace();
+
+		// INSERT INTO animales (nombre) VALUES ( 'gato')
+		// String sentenciaInsertar = "INSERT INTO animales (nombre) VALUES
+		// ('"+nombreAnimal+"')";
+		// st.execute(sentenciaInsertar);
+
+		// UPDATE animales SET nombre='aaaa' WHERE id 2
+		// String sentenciaUpdate = "UPDATE animales SET nombre='elefante' WHERE id =
+		// 2";
+		// st.executeUpdate("sentenciaUpdate");
+
+		// DELETE FROM animales WHERE nombre = 'aaaa'
+		// String sentenciaDelete = "DELETE FROM animales WHERE nombre =
+		// '"+nombreAnimal+"'";
+		// st.execute(sentenciaDelete);
+
+		// SELECT * FROM animales
+		// SELECT * FROM animales WHERE AAAA=AAAA
+		// String sentenciaSelect = "SELECT * FROM animales";
+		// ResultSet resultado = st.executeQuery(sentenciaSelect);
+		// while(resultado.next()) {
+		// System.out.println(resultado.getInt(1)+ " - " +resultado.getString(2));
+
 	}
-		
-			//	INSERT INTO animales (nombre) VALUES ( 'gato')
-			//String sentenciaInsertar = "INSERT INTO animales (nombre) VALUES ('"+nombreAnimal+"')";
-			//st.execute(sentenciaInsertar);
+
+	private static void insertarArbol() {
+
+		try {
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
+			Statement st = con.createStatement();
+			Scanner sc = new Scanner(System.in);
 			
-			//UPDATE animales SET nombre='aaaa' WHERE id 2
-			//String sentenciaUpdate = "UPDATE animales SET nombre='elefante' WHERE id = 2";
-			//st.executeUpdate("sentenciaUpdate");
+			String nombre_comun;
+			String nombre_cientifico;
+			String habitat;
+			int altura;
+			String origen;
 			
-			//DELETE FROM animales WHERE nombre = 'aaaa'
-			//String sentenciaDelete = "DELETE FROM animales WHERE nombre = '"+nombreAnimal+"'";
-			//st.execute(sentenciaDelete);
+			System.out.println("introduce el nombre común del arbol");
+			nombre_comun = sc.nextLine();
+			System.out.println("introduce el nombre científico del arbol");
+			nombre_cientifico = sc.nextLine();
+			System.out.println("introduce el habitat del arbol");
+			habitat = sc.nextLine();
+			System.out.println("introduce la altura en metros del arbol");
+			altura = Integer.parseInt(sc.nextLine());
+			System.out.println("introduce el origen del arbol");
+			origen = sc.nextLine();
+
+			String sentenciaInsertar = "INSERT INTO arboles (nombre_comun, nombre_cientifico, habitat, altura, origen) VALUES ('"
+					+ nombre_comun + "'+'" + nombre_cientifico + "'+'" + habitat + "'+'" + altura + "'+'" + origen
+					+ "')";
+			st.execute(sentenciaInsertar);
+
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void eliminarArbol() {
+
+		try {
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
+			Statement st = con.createStatement();
+			Scanner sc = new Scanner(System.in);
+
+			System.out.println("introduce el id del arbol que quieras eliminar");
+			int id = Integer.parseInt(sc.nextLine());
+
 			
-			
-			//SELECT * FROM animales
-			//SELECT * FROM animales WHERE AAAA=AAAA
-			//String sentenciaSelect = "SELECT * FROM animales";
-			//ResultSet resultado = st.executeQuery(sentenciaSelect);
-			//while(resultado.next()) {
-			//	System.out.println(resultado.getInt(1)+ " - " +resultado.getString(2));
-			
-	
+			String sentenciaDelete = "DELETE FROM arboles WHERE id = ('"+id+"')";
+			st.execute(sentenciaDelete);
+
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }
