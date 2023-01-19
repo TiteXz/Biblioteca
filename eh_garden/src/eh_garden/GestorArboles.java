@@ -213,35 +213,12 @@ public class GestorArboles {
 			Statement st = con.createStatement();
 			Scanner sc = new Scanner(System.in);
 
-			// SELECT * FROM animales
-			// SELECT * FROM animales WHERE AAAA=AAAA
-			// String sentenciaSelect = "SELECT * FROM animales";
-			// ResultSet resultado = st.executeQuery(sentenciaSelect);
-			// while(resultado.next()) {
-			// System.out.println(resultado.getInt(1)+ " - " +resultado.getString(2));
-
 			
-			System.out.println("introduce el id del arbol que quieras modificar");
-			int id = Integer.parseInt(sc.nextLine());
-			System.out.println("introduce los nuevos datos que quieras darle");
-			System.out.println("introduce el nombre común del arbol");
-			String nombre_comun = sc.nextLine();
-			System.out.println("introduce el nombre científico del arbol");
-			String nombre_cientifico = sc.nextLine();
-			System.out.println("introduce el habitat del arbol");
-			String habitat = sc.nextLine();
-			System.out.println("introduce la altura en metros del arbol");
-			int altura = Integer.parseInt(sc.nextLine());
-			System.out.println("introduce el origen del arbol");
-			String origen = sc.nextLine();
-
-		    String sentenciaUpdate = "UPDATE arboles SET nombre_comun='"+nombre_comun+"' WHERE id ="+id+";"+
-		    						 "UPDATE arboles SET nombre_cientifico='"+nombre_cientifico+"' WHERE id ="+id+";"+
-		    						 "UPDATE arboles SET habitat='"+habitat+"'WHERE id ="+id+";"+
-		    						 "UPDATE arboles SET altura='"+altura+"' WHERE id ="+id+";"+
-		    						 "UPDATE arboles SET origen='"+origen+"' WHERE id ="+id+"";
-		    						 
-		    st.executeUpdate(sentenciaUpdate);
+			 String sentenciaVisualizar =  "SELECT * FROM arboles ";
+			 ResultSet resultado = st.executeQuery(sentenciaVisualizar);
+				 while(resultado.next()) {
+				 System.out.println(resultado.getInt(1)+ " - " +resultado.getString(2)+ " - " +resultado.getString(3)+ " - " +resultado.getString(4)+ " - " +resultado.getString(5)+ " - " +resultado.getString(6));
+		 }
 
 			con.close();
 		} catch (SQLException e) {
