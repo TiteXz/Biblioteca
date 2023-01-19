@@ -53,6 +53,9 @@ public class GestorArboles {
 				case MODI_ARBOL:
 					updateArbol();
 					break;
+				case VISU_ARBOL:
+					visualizarArbol();
+					break;
 				case SALIR:
 					System.out.println("ADIOS");
 					break;
@@ -70,27 +73,6 @@ public class GestorArboles {
 			e.printStackTrace();
 		}
 
-		// INSERT INTO animales (nombre) VALUES ( 'gato')
-		// String sentenciaInsertar = "INSERT INTO animales (nombre) VALUES
-		// ('"+nombreAnimal+"')";
-		// st.execute(sentenciaInsertar);
-
-		// UPDATE animales SET nombre='aaaa' WHERE id 2
-		// String sentenciaUpdate = "UPDATE animales SET nombre='elefante' WHERE id =
-		// 2";
-		// st.executeUpdate("sentenciaUpdate");
-
-		// DELETE FROM animales WHERE nombre = 'aaaa'
-		// String sentenciaDelete = "DELETE FROM animales WHERE nombre =
-		// '"+nombreAnimal+"'";
-		// st.execute(sentenciaDelete);
-
-		// SELECT * FROM animales
-		// SELECT * FROM animales WHERE AAAA=AAAA
-		// String sentenciaSelect = "SELECT * FROM animales";
-		// ResultSet resultado = st.executeQuery(sentenciaSelect);
-		// while(resultado.next()) {
-		// System.out.println(resultado.getInt(1)+ " - " +resultado.getString(2));
 
 	}
 
