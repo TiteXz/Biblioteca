@@ -2,6 +2,7 @@ package eh_garden;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -82,7 +83,7 @@ public class GestorArboles {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
-			Statement st = con.createStatement();
+			PreparedStatement Pst = con.prepareStatement("INSERT INTO arboles VALUES (null,?,?,?,?,?)");
 			Scanner sc = new Scanner(System.in);
 			
 			String nombre_comun;
@@ -93,19 +94,21 @@ public class GestorArboles {
 			
 			System.out.println("introduce el nombre común del arbol");
 			nombre_comun = sc.nextLine();
+			Pst.setString(1, nombre_comun);
 			System.out.println("introduce el nombre científico del arbol");
 			nombre_cientifico = sc.nextLine();
+			Pst.setString(2, nombre_cientifico);
 			System.out.println("introduce el habitat del arbol");
 			habitat = sc.nextLine();
+			Pst.setString(3, habitat);
 			System.out.println("introduce la altura en metros del arbol");
 			altura = Integer.parseInt(sc.nextLine());
+			Pst.setInt(4, altura);
 			System.out.println("introduce el origen del arbol");
 			origen = sc.nextLine();
+			Pst.setString(5, origen);
 
-			String sentenciaInsertar = "INSERT INTO arboles (nombre_comun, nombre_cientifico, habitat, altura, origen) VALUES ('"
-					+ nombre_comun + "','" + nombre_cientifico + "','" + habitat + "','" + altura + "','" + origen
-					+ "')";
-			st.execute(sentenciaInsertar);
+			Pst.execute();
 
 			con.close();
 		} catch (SQLException e) {
@@ -121,15 +124,13 @@ public class GestorArboles {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
-			Statement st = con.createStatement();
+			PreparedStatement Pst = con.prepareStatement("DELETE FROM arboles WHERE id = ?");
 			Scanner sc = new Scanner(System.in);
 
 			System.out.println("introduce el id del arbol que quieras eliminar");
 			int id = Integer.parseInt(sc.nextLine());
-
-			
-			String sentenciaDelete = "DELETE FROM arboles WHERE id = ('"+id+"')";
-			st.execute(sentenciaDelete);
+			Pst.setInt(1, id);
+			Pst.execute();
 
 			con.close();
 		} catch (SQLException e) {
@@ -142,41 +143,61 @@ public class GestorArboles {
 
 		try {
 			
-			// UPDATE animales SET nombre='aaaa' WHERE id 2
-			// String sentenciaUpdate = "UPDATE animales SET nombre='elefante' WHERE id =
-			// 2";
-			// st.executeUpdate("sentenciaUpdate");
+//			PreparedStatement Pst=conexion.prepareStatement("UPDATE arboles SET nombre:comun= (?) WHERE id=(?);");
+//			if(atrib.equals("altura")) {
+//				prep.setDouble(1, Double.parseDouble(newValue));
+//			}
+//			else {
+//				prep.setString(1, newValue);
+//			}
+//			prep.executeUpdate();
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
 			
-			Statement st = con.createStatement();
+			PreparedStatement Pst=con.prepareStatement("UPDATE arboles SET nombre_comun= (?) WHERE id=(?);");
+			PreparedStatement Pst2=con.prepareStatement("UPDATE arboles SET nombre_cientifico= (?) WHERE id=(?);");
+			PreparedStatement Pst3=con.prepareStatement("UPDATE arboles SET habitat= (?) WHERE id=(?);");
+			PreparedStatement Pst4=con.prepareStatement("UPDATE arboles SET altura= (?) WHERE id=(?);");
+			PreparedStatement Pst5=con.prepareStatement("UPDATE arboles SET origen= (?) WHERE id=(?);");
 			Scanner sc = new Scanner(System.in);
-
+			
 			System.out.println("introduce el id del arbol que quieras modificar");
 			int id = Integer.parseInt(sc.nextLine());
+			Pst.setInt(2, id);
+			Pst2.setInt(2, id);
+			Pst3.setInt(2, id);
+			Pst4.setInt(2, id);
+			Pst5.setInt(2, id);
+			
+			
 			System.out.println("introduce los nuevos datos que quieras darle");
 			System.out.println("introduce el nombre común del arbol");
 			String nombre_comun = sc.nextLine();
+			Pst.setString(1, nombre_comun);
+			
 			System.out.println("introduce el nombre científico del arbol");
 			String nombre_cientifico = sc.nextLine();
+			Pst2.setString(1, nombre_cientifico);
+			
 			System.out.println("introduce el habitat del arbol");
 			String habitat = sc.nextLine();
+			Pst3.setString(1, habitat);
+			
 			System.out.println("introduce la altura en metros del arbol");
 			int altura = Integer.parseInt(sc.nextLine());
+			Pst4.setInt(1, altura);
+		
 			System.out.println("introduce el origen del arbol");
 			String origen = sc.nextLine();
-
-		    String sentenciaUpdate ="UPDATE arboles SET nombre_comun='"+nombre_comun+"' WHERE id ="+id+"";
-		    st.executeUpdate(sentenciaUpdate);
-		    String sentenciaUpdate2 ="UPDATE arboles SET nombre_cientifico='"+nombre_cientifico+"' WHERE id ="+id+"";
-		    st.executeUpdate(sentenciaUpdate2);
-		    String sentenciaUpdate3 ="UPDATE arboles SET habitat='"+habitat+"'WHERE id ="+id+"";
-		    st.executeUpdate(sentenciaUpdate3);
-		    String sentenciaUpdate4 ="UPDATE arboles SET altura='"+altura+"' WHERE id ="+id+"";
-		    st.executeUpdate(sentenciaUpdate4);
-		    String sentenciaUpdate5 ="UPDATE arboles SET origen='"+origen+"' WHERE id ="+id+"";
-		    st.executeUpdate(sentenciaUpdate5);
+			Pst5.setString(1, origen);
+			
+			Pst.executeUpdate();
+			Pst2.executeUpdate();
+			Pst3.executeUpdate();
+			Pst4.executeUpdate();
+			Pst5.executeUpdate();
+			
 
 			con.close();
 		} catch (SQLException e) {
@@ -192,12 +213,9 @@ public class GestorArboles {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
 			
-			Statement st = con.createStatement();
-			Scanner sc = new Scanner(System.in);
+			PreparedStatement Pst = con.prepareStatement("SELECT * FROM arboles ");
 
-			
-			 String sentenciaVisualizar =  "SELECT * FROM arboles ";
-			 ResultSet resultado = st.executeQuery(sentenciaVisualizar);
+			 ResultSet resultado = Pst.executeQuery();
 				 while(resultado.next()) {
 				 System.out.println(resultado.getInt(1)+ " - " +resultado.getString(2)+ " - " +resultado.getString(3)+ " - " +resultado.getString(4)+ " - " +resultado.getString(5)+ " - " +resultado.getString(6));
 		 }
