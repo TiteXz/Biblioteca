@@ -84,6 +84,7 @@ public class GestorArboles {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
 			PreparedStatement Pst = con.prepareStatement("INSERT INTO arboles VALUES (null,?,?,?,?,?)");
+			Arbol arbol = new Arbol();
 			Scanner sc = new Scanner(System.in);
 			
 			String nombre_comun;
@@ -143,32 +144,19 @@ public class GestorArboles {
 
 		try {
 			
-//			PreparedStatement Pst=conexion.prepareStatement("UPDATE arboles SET nombre:comun= (?) WHERE id=(?);");
-//			if(atrib.equals("altura")) {
-//				prep.setDouble(1, Double.parseDouble(newValue));
-//			}
-//			else {
-//				prep.setString(1, newValue);
-//			}
-//			prep.executeUpdate();
-
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
 			
-			PreparedStatement Pst=con.prepareStatement("UPDATE arboles SET nombre_comun= (?) WHERE id=(?);");
-			PreparedStatement Pst2=con.prepareStatement("UPDATE arboles SET nombre_cientifico= (?) WHERE id=(?);");
-			PreparedStatement Pst3=con.prepareStatement("UPDATE arboles SET habitat= (?) WHERE id=(?);");
-			PreparedStatement Pst4=con.prepareStatement("UPDATE arboles SET altura= (?) WHERE id=(?);");
-			PreparedStatement Pst5=con.prepareStatement("UPDATE arboles SET origen= (?) WHERE id=(?);");
+			PreparedStatement Pst=con.prepareStatement("UPDATE arboles SET nombre_comun= (?),nombre_cientifico= (?),habitat= (?),altura= (?),origen= (?) WHERE id=(?);");
 			Scanner sc = new Scanner(System.in);
 			
 			System.out.println("introduce el id del arbol que quieras modificar");
 			int id = Integer.parseInt(sc.nextLine());
-			Pst.setInt(2, id);
-			Pst2.setInt(2, id);
-			Pst3.setInt(2, id);
-			Pst4.setInt(2, id);
-			Pst5.setInt(2, id);
+			Pst.setInt(6, id);
+			Pst.setInt(6, id);
+			Pst.setInt(6, id);
+			Pst.setInt(6, id);
+			Pst.setInt(6, id);
 			
 			
 			System.out.println("introduce los nuevos datos que quieras darle");
@@ -178,25 +166,21 @@ public class GestorArboles {
 			
 			System.out.println("introduce el nombre científico del arbol");
 			String nombre_cientifico = sc.nextLine();
-			Pst2.setString(1, nombre_cientifico);
+			Pst.setString(2, nombre_cientifico);
 			
 			System.out.println("introduce el habitat del arbol");
 			String habitat = sc.nextLine();
-			Pst3.setString(1, habitat);
+			Pst.setString(3, habitat);
 			
 			System.out.println("introduce la altura en metros del arbol");
 			int altura = Integer.parseInt(sc.nextLine());
-			Pst4.setInt(1, altura);
+			Pst.setInt(4, altura);
 		
 			System.out.println("introduce el origen del arbol");
 			String origen = sc.nextLine();
-			Pst5.setString(1, origen);
+			Pst.setString(5, origen);
 			
 			Pst.executeUpdate();
-			Pst2.executeUpdate();
-			Pst3.executeUpdate();
-			Pst4.executeUpdate();
-			Pst5.executeUpdate();
 			
 
 			con.close();
