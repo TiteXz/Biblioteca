@@ -9,6 +9,8 @@ public class Arbol {
 	private int altura;
 	private String origen;
 	
+	public Arbol() {}
+	
 	public Arbol(int id, String nombreComun, String nombreCliente, String habitat, int altura, String origen) {
 		super();
 		this.id = id;
