@@ -87,29 +87,25 @@ public class GestorArboles {
 			Arbol arbol = new Arbol();
 			Scanner sc = new Scanner(System.in);
 			
-			String nombre_comun;
-			String nombre_cientifico;
-			String habitat;
-			int altura;
-			String origen;
 			
 			System.out.println("introduce el nombre común del arbol");
-			nombre_comun = sc.nextLine();
-			Pst.setString(1, nombre_comun);
+			arbol.setNombreComun( sc.nextLine());
+			Pst.setString(1, arbol.getNombreComun());
 			System.out.println("introduce el nombre científico del arbol");
-			nombre_cientifico = sc.nextLine();
-			Pst.setString(2, nombre_cientifico);
+			arbol.setNombreCientifico( sc.nextLine());
+			Pst.setString(2, arbol.getNombreCientifico());
 			System.out.println("introduce el habitat del arbol");
-			habitat = sc.nextLine();
-			Pst.setString(3, habitat);
+			arbol.setHabitat( sc.nextLine());
+			Pst.setString(3, arbol.getHabitat());
 			System.out.println("introduce la altura en metros del arbol");
-			altura = Integer.parseInt(sc.nextLine());
-			Pst.setInt(4, altura);
+			arbol.setAltura( Integer.parseInt(sc.nextLine()));
+			Pst.setInt(4, arbol.getAltura());
 			System.out.println("introduce el origen del arbol");
-			origen = sc.nextLine();
-			Pst.setString(5, origen);
+			arbol.setOrigen( sc.nextLine());
+			Pst.setString(5, arbol.getOrigen());
 
 			Pst.execute();
+			sc.close();
 
 			con.close();
 		} catch (SQLException e) {
@@ -133,6 +129,7 @@ public class GestorArboles {
 			Pst.setInt(1, id);
 			Pst.execute();
 
+			sc.close();
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -148,6 +145,7 @@ public class GestorArboles {
 			Connection con = DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BBDD, USERNAME, PASSWORD);
 			
 			PreparedStatement Pst=con.prepareStatement("UPDATE arboles SET nombre_comun= (?),nombre_cientifico= (?),habitat= (?),altura= (?),origen= (?) WHERE id=(?);");
+			Arbol arbol = new Arbol();
 			Scanner sc = new Scanner(System.in);
 			
 			System.out.println("introduce el id del arbol que quieras modificar");
@@ -161,28 +159,29 @@ public class GestorArboles {
 			
 			System.out.println("introduce los nuevos datos que quieras darle");
 			System.out.println("introduce el nombre común del arbol");
-			String nombre_comun = sc.nextLine();
-			Pst.setString(1, nombre_comun);
+			arbol.setNombreComun(sc.nextLine());
+			Pst.setString(1, arbol.getNombreComun());
 			
 			System.out.println("introduce el nombre científico del arbol");
-			String nombre_cientifico = sc.nextLine();
-			Pst.setString(2, nombre_cientifico);
+			arbol.setNombreCientifico(sc.nextLine());
+			Pst.setString(2, arbol.getNombreCientifico());
 			
 			System.out.println("introduce el habitat del arbol");
-			String habitat = sc.nextLine();
-			Pst.setString(3, habitat);
+			arbol.setHabitat(sc.nextLine());
+			Pst.setString(3, arbol.getHabitat());
 			
 			System.out.println("introduce la altura en metros del arbol");
-			int altura = Integer.parseInt(sc.nextLine());
-			Pst.setInt(4, altura);
+			arbol.setAltura(Integer.parseInt(sc.nextLine()));
+			Pst.setInt(4, arbol.getAltura());
 		
 			System.out.println("introduce el origen del arbol");
-			String origen = sc.nextLine();
-			Pst.setString(5, origen);
+			arbol.setOrigen(sc.nextLine());
+			Pst.setString(5, arbol.getOrigen());
 			
 			Pst.executeUpdate();
 			
-
+			
+			sc.close();
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
