@@ -4,18 +4,18 @@ public class Arbol {
 
 	private int id;
 	private String nombreComun;
-	private String nombreCliente;
+	private String nombreCientifico;
 	private String Habitat;
 	private int altura;
 	private String origen;
 	
 	public Arbol() {}
 	
-	public Arbol(int id, String nombreComun, String nombreCliente, String habitat, int altura, String origen) {
+	public Arbol(int id, String nombreComun, String nombreCientifico, String habitat, int altura, String origen) {
 		super();
 		this.id = id;
 		this.nombreComun = nombreComun;
-		this.nombreCliente = nombreCliente;
+		this.nombreCientifico = nombreCientifico;
 		Habitat = habitat;
 		this.altura = altura;
 		this.origen = origen;
@@ -37,12 +37,12 @@ public class Arbol {
 		this.nombreComun = nombreComun;
 	}
 
-	public String getNombreCliente() {
-		return nombreCliente;
+	public String getNombreCientifico() {
+		return nombreCientifico;
 	}
 
-	public void setNombreCliente(String nombreCliente) {
-		this.nombreCliente = nombreCliente;
+	public void setNombreCientifico(String nombreCientifico) {
+		this.nombreCientifico = nombreCientifico;
 	}
 
 	public String getHabitat() {
