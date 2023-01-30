@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -27,10 +28,22 @@ public class GestorBBDD extends Conector{
 		super.cerrar();		
 	}
 
-	public Libro getLibro(int id) {
-		
+	public Libro getLibro(int id) throws ClassNotFoundException, SQLException {
+		super.conectar();
+		Libro libro = new Libro();
+		PreparedStatement pst = con.prepareStatement("SELECT FROM libros WHERE id = ?");
+		pst.setInt(1, id);
+		ResultSet resultado = pst.executeQuery();
+		System.out.println();
 	return null;
 	
+	
+//	PreparedStatement Pst = con.prepareStatement("SELECT * FROM arboles ");
+//
+//	 ResultSet resultado = Pst.executeQuery();
+//		 while(resultado.next()) {
+//		 System.out.println(resultado.getInt(1)+ " - " +resultado.getString(2)+ " - " +resultado.getString(3)+ " - " +resultado.getString(4)+ " - " +resultado.getString(5)+ " - " +resultado.getString(6));
+//}
 	}
 	
 }
