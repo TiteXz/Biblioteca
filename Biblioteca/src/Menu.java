@@ -1,6 +1,15 @@
+import java.text.ParseException;
 
 public class Menu {
 
+	public void run() throws ParseException {
+		
+		mostrarMenuPrincipal();
+		mostrarMenuLibros();
+		mostrarMenuSocios();
+		mostrarMenuPrestamos();
+	}
+	
 	static public void mostrarMenuPrincipal() {
 		//declaracion de constantes (final) para las opciones
 		final int OPCION_UNO = 1;
