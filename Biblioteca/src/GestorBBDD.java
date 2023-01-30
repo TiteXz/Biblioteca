@@ -10,16 +10,17 @@ public class GestorBBDD extends Conector{
 	public void insertarLibros(Libro libro) throws SQLException {
 			PreparedStatement pst = con.prepareStatement("INSERT INTO libros VALUES (null,?,?,?)");
 			pst.setString(1,libro.getTitulo());
-			libro.setAutor(null);
-			libro.setNum_pag(null);
+			pst.setString(2,libro.getAutor());
+			pst.setInt(1,libro.getNum_pag());
 			
 			pst.execute();
 	}
 	
 	public void eliminarLibro(int id) throws SQLException {
-		PreparedStatement Pst = con.prepareStatement("DELETE FROM libros WHERE id = ?");
+		PreparedStatement pst = con.prepareStatement("DELETE FROM libros WHERE id = ?");
+		pst.setInt(1, id);
 		
-		Pst.execute();
+		pst.execute();
 	}
 
 	public Libro getLibro(int id) {
