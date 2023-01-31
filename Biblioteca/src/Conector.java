@@ -9,7 +9,7 @@ public class Conector {
 	private static final String USERNAME = "root";
 	private static final String PASSWORD = "";
 
-	protected Connection con;
+	protected static Connection con;
 	
 	public void conectar() throws ClassNotFoundException {
 		try{
@@ -22,6 +22,7 @@ public class Conector {
 			SQLException e){
 			e.printStackTrace();
 		}
+		
 	}
 
 	public Connection getCon() {
