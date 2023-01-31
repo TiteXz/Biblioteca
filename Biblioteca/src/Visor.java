@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class Visor extends Conector{
 	
-	ArrayList<String> libros = new ArrayList<String>();
+	ArrayList<Libro> libros = new ArrayList<Libro>();
 
-	public static void mostrarLibros(ArrayList<String>libros) throws SQLException {
+	public static void mostrarLibros(ArrayList<Libro>libros) throws SQLException {
 		PreparedStatement Pst = con.prepareStatement("SELECT * FROM libros ");
 
 		 ResultSet resultado = Pst.executeQuery();
