@@ -72,32 +72,13 @@ public class Menu {
 	}
 
 	public static void mostrarMenuLibros() {
-		Scanner scan = new Scanner(System.in);
-		int opcion_menu;
-
 		
 			System.out.println("------MENU-------");
 			System.out.println(INSERTAR_LIBRO + ". Insertar Libro");
 			System.out.println(ELIMINAR_LIBRO + ". Eliminar Libro");
 			System.out.println(MOSTRAR_LIBRO + ". Ver Libro");
 			System.out.println("Elije una de las opciones");
-			opcion_menu = Integer.parseInt(scan.nextLine());
 			
-			switch (opcion_menu) {
-			case INSERTAR_LIBRO:
-				mostrarMenuPrincipal();
-				break;
-			case ELIMINAR_LIBRO:
-				mostrarMenuLibros();
-				break;
-			case MOSTRAR_LIBRO:
-				mostrarMenuSocios();
-				break;
-			default:
-				System.out.println("Opcion incorrecta!");
-			}
-		
-		scan.close();
 	}
 
 	 public static void mostrarMenuSocios() {
