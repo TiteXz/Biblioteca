@@ -34,16 +34,13 @@ public class GestorBBDD extends Conector{
 		PreparedStatement pst = con.prepareStatement("SELECT FROM libros WHERE id = ?");
 		pst.setInt(1, id);
 		ResultSet resultado = pst.executeQuery();
-		System.out.println();
-	return null;
+		libro.setId(resultado.getInt(id));
+		libro.setTitulo(resultado.getString("titulo"));
+		libro.setAutor(resultado.getString("autor"));
+		libro.setNum_pag(resultado.getInt("num_pag"));
+		
+	return libro;
 	
-	
-//	PreparedStatement Pst = con.prepareStatement("SELECT * FROM arboles ");
-//
-//	 ResultSet resultado = Pst.executeQuery();
-//		 while(resultado.next()) {
-//		 System.out.println(resultado.getInt(1)+ " - " +resultado.getString(2)+ " - " +resultado.getString(3)+ " - " +resultado.getString(4)+ " - " +resultado.getString(5)+ " - " +resultado.getString(6));
-//}
 	}
 	
 }
