@@ -30,7 +30,7 @@ public class Menu {
 	public static final int REALIZAR_PRESTAMO = 1;
 				
 				
-	public static void MostrarMenuMenus() {
+	public static void mostrarMenuMenus() {
 
 			System.out.println("------MENU-------");
 			System.out.println(MENU_PRINCIPAL + ". Mostrar el menu principal ");
