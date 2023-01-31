@@ -29,4 +29,11 @@ public class FormularioDeDatos {
 		return libro;
 		
 	}
+	
+	public static int pedirIdLibro(Scanner sc) {
+		System.out.println("Cual es el id del libro");
+		int id = Integer.parseInt(sc.nextLine());
+		
+		return id;
+	}
 }
