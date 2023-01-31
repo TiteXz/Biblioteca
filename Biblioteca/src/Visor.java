@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
 public class Visor extends Conector{
-	
-	ArrayList<Libro> libros = new ArrayList<Libro>();
 
 	public static void mostrarLibros(ArrayList<Libro>libros) {
 		for (Libro libro : libros) {
