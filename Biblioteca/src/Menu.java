@@ -20,7 +20,8 @@ public class Menu {
 				//declaracion de constantes (final) para las opciones
 	public static final int INSERTAR_LIBRO = 1;
 	public static final int ELIMINAR_LIBRO = 2;
-	public static final int MOSTRAR_LIBRO = 3;
+	public static final int MOSTRAR_LIBRO = 4;
+	public static final int MODIFICAR_LIBRO = 3;
 		
 
 				//declaracion de constantes (final) para las opciones
@@ -47,6 +48,7 @@ public class Menu {
 			System.out.println("------MENU-------");
 			System.out.println(INSERTAR_LIBRO + ". Insertar Libro");
 			System.out.println(ELIMINAR_LIBRO + ". Eliminar Libro");
+			System.out.println(MODIFICAR_LIBRO + ". Modificar Libro");
 			System.out.println(MOSTRAR_LIBRO + ". Ver Libro");
 			System.out.println(SALIR + ". Salir");
 			System.out.println("Elije una de las opciones");
