@@ -43,6 +43,24 @@ public class GestorBBDD extends Conector{
 	
 	}
 	
+	public void modificarLibro() throws SQLException, ClassNotFoundException {
+		super.conectar();
+		PreparedStatement Pst=con.prepareStatement("UPDATE socios SET id= (?),nombre= (?),apellido= (?),num_pag= (?) WHERE id=(?);");
+		Libro libro = new Libro();
+		
+		System.out.println("introduce el id del libro que quieras modificar");
+	
+		Pst.setInt(1, libro.getId());
+		Pst.setString(2, libro.getTitulo());
+		Pst.setString(3, libro.getAutor());
+		Pst.setInt(4, libro.getNum_pag());
+		
+		Pst.executeUpdate();
+		
+		
+		super.cerrar();
+	}
+	
 	public void insertarSocio(Socio socio) throws SQLException, ClassNotFoundException {
 		super.conectar();
 			PreparedStatement pst = con.prepareStatement("INSERT INTO socios VALUES (null,?,?,?,?,?,?)");
@@ -82,6 +100,23 @@ public class GestorBBDD extends Conector{
 		
 	return socio;
 	
+	}
+	
+	public void modificarSocio() throws SQLException, ClassNotFoundException {
+		super.conectar();
+		PreparedStatement Pst=con.prepareStatement("UPDATE socios SET id= (?),nombre= (?),apellido= (?),provincia= (?),poblacion= (?),dni= (?) WHERE id=(?);");
+		Socio socio = new Socio();
+	
+		Pst.setInt(1, socio.getId());
+		Pst.setString(2, socio.getNombre());
+		Pst.setString(3, socio.getApellido());
+		Pst.setString(4, socio.getProvincia());
+		Pst.setString(5, socio.getPoblacion());
+		Pst.setString(6, socio.getDni());
+		
+		Pst.executeUpdate();
+		
+		super.cerrar();
 	}
 	
 }
