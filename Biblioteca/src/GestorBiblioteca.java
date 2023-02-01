@@ -7,6 +7,7 @@ public class GestorBiblioteca {
 	public static void run() {
 		Scanner sc = new Scanner(System.in);
 		int opcion_menu;
+		
 
 		Menu.mostrarMenuPrincipal();
 		opcion_menu = Integer.parseInt(sc.nextLine());
