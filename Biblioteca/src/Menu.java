@@ -25,7 +25,10 @@ public class Menu {
 		
 
 				//declaracion de constantes (final) para las opciones
-	public static final int VER_SOCIOS = 1;
+	public static final int INSERTAR_SOCIO = 1;
+	public static final int ELIMINAR_SOCIO = 2;
+	public static final int MODIFICAR_SOCIO = 3;
+	public static final int VER_SOCIOS = 4;
 				
 				//declaracion de constantes (final) para las opciones
 	public static final int REALIZAR_PRESTAMO = 1;
@@ -58,6 +61,9 @@ public class Menu {
 	 public static void mostrarMenuSocios() {
 		 
 			System.out.println("------MENU-------");
+			System.out.println(INSERTAR_SOCIO + ". Insertar Socios");
+			System.out.println(ELIMINAR_SOCIO + ". Eliminar Socios");
+			System.out.println(MODIFICAR_SOCIO + ". Modificar Socios");
 			System.out.println(VER_SOCIOS + ". Ver Socios");
 			System.out.println(SALIR + ". Salir");
 			System.out.println("Elije una de las opciones");
