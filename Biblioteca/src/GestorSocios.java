@@ -2,8 +2,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class GestorSocios {
-	public void run() throws ClassNotFoundException, SQLException {
-		Scanner sc = new Scanner(System.in);
+	public static void run(Scanner sc) throws ClassNotFoundException, SQLException {
 		int opcion_menu;
 		GestorBBDD gbd = new GestorBBDD();
 		Socio socio = new Socio();

@@ -1,10 +1,11 @@
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class GestorBiblioteca {
 	
 	
 	
-	public static void run() {
+	public static void run() throws ClassNotFoundException, SQLException {
 		Scanner sc = new Scanner(System.in);
 		int opcion_menu;
 		
@@ -17,10 +18,10 @@ public class GestorBiblioteca {
 			
 			switch (opcion_menu) {
 			case Menu.GESTIONAR_LIBROS:
-				Menu.mostrarMenuLibros();
+				GestorLibros.run(sc);
 				break;
 			case Menu.GESTIONAR_SOCIOS:
-				Menu.mostrarMenuSocios();
+				GestorSocios.run(sc);
 				break;
 			case Menu.GESTIONAR_PRESTAMOS:
 				Menu.mostrarMenuPrestamos();

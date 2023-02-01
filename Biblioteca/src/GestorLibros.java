@@ -3,9 +3,8 @@ import java.util.Scanner;
 
 public class GestorLibros {
 
-	public void run() throws ClassNotFoundException, SQLException {
-		Scanner sc = new Scanner(System.in);
-		int opcion_menu;
+	public static void run(Scanner sc) throws ClassNotFoundException, SQLException {
+		int opcion_menu=0;
 		GestorBBDD gBD = new GestorBBDD();
 		Libro libro = new Libro();
 		
@@ -13,12 +12,12 @@ public class GestorLibros {
 
 		
 		
-	
-			Menu.mostrarMenuLibros();
-			opcion_menu = Integer.parseInt(sc.nextLine());
-			
+	do {
+		Menu.mostrarMenuLibros();
+		opcion_menu = Integer.parseInt(sc.nextLine());
 		switch (opcion_menu) {
 		case Menu.INSERTAR_LIBRO:
+			FormularioDeDatos.pedirDatosLibro(sc);
 			gBD.insertarLibros(libro);
 			System.out.println("Has insertado un libro");
 			break;
@@ -37,7 +36,7 @@ public class GestorLibros {
 			System.out.println("Opcion incorrecta!");
 			}
 		
-		
+		}while(opcion_menu !=0);
 		sc.close();
 	
 	}
