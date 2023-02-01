@@ -11,7 +11,7 @@ public class GestorBiblioteca {
 
 
 	
-		do {
+		
 			Menu.mostrarMenuPrincipal();
 			opcion_menu = Integer.parseInt(sc.nextLine());
 			
@@ -28,7 +28,7 @@ public class GestorBiblioteca {
 			default:
 				System.out.println("Opcion incorrecta!");
 			}
-		}while (opcion_menu != Menu.SALIR);
+		
 		sc.close();
 		
 	}

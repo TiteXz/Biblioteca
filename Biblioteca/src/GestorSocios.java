@@ -10,7 +10,7 @@ public class GestorSocios {
 		
 	
 		
-		do {
+	
 			Menu.mostrarMenuLibros();
 			opcion_menu = Integer.parseInt(sc.nextLine());
 			
@@ -31,7 +31,7 @@ public class GestorSocios {
 			System.out.println("Opcion incorrecta!");
 		}
 		
-			}while(opcion_menu != Menu.SALIR);
+			
 	
 	sc.close();
 	}
