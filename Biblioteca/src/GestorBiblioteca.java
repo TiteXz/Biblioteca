@@ -8,7 +8,7 @@ public class GestorBiblioteca {
 		Scanner sc = new Scanner(System.in);
 		int opcion_menu;
 
-		Menu.mostrarMenuMenus();
+		Menu.mostrarMenuPrincipal();
 		opcion_menu = Integer.parseInt(sc.nextLine());
 	
 		do {
