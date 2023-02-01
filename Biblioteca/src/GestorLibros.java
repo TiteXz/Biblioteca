@@ -27,7 +27,7 @@ public class GestorLibros {
 			FormularioDeDatos.modificarDatosLibro(libro, sc);
 			System.out.println("Has modificado el libro");
 			break;
-		case Menu.MOSTRAR_LIBRO:
+		case Menu.MOSTRAR_LIBROS:
 			gBD.getLibro(FormularioDeDatos.pedirIdLibro(sc));
 			break;
 		default:
