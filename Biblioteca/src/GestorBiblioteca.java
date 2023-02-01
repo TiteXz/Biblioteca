@@ -17,7 +17,7 @@ public class GestorBiblioteca {
 				Menu.mostrarMenuLibros();
 				break;
 			case Menu.GESTIONAR_SOCIOS:
-				
+				Menu.mostrarMenuSocios();
 				break;
 			case Menu.GESTIONAR_PRESTAMOS:
 				Menu.mostrarMenuPrestamos();
