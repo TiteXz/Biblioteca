@@ -13,20 +13,14 @@ public class GestorBiblioteca {
 	
 		do {
 			switch (opcion_menu) {
-			case Menu.MENU_PRINCIPAL:
-				Menu.mostrarMenuPrincipal();
-				break;
-			case Menu.MENU_LIBROS:
+			case Menu.GESTIONAR_LIBROS:
 				Menu.mostrarMenuLibros();
 				break;
-			case Menu.MENU_SOCIOS:
-				Menu.mostrarMenuSocios();
+			case Menu.GESTIONAR_SOCIOS:
+				
 				break;
-			case Menu.MENU_PRESTAMOS:
+			case Menu.GESTIONAR_PRESTAMOS:
 				Menu.mostrarMenuPrestamos();
-				break;
-			case Menu.SALIR:
-				System.out.println("ADIOS");
 				break;
 			default:
 				System.out.println("Opcion incorrecta!");
