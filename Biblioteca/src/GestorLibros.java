@@ -9,6 +9,7 @@ public class GestorLibros {
 		Menu.mostrarMenuLibros();
 		opcion_menu = Integer.parseInt(sc.nextLine());
 		
+		do {
 		switch (opcion_menu) {
 		case Menu.INSERTAR_LIBRO:
 			
@@ -22,8 +23,10 @@ public class GestorLibros {
 			break;
 		default:
 			System.out.println("Opcion incorrecta!");
-		}
+			}
+		
+		}while (opcion_menu != Menu.SALIR);
+		sc.close();
 	
-	sc.close();
 	}
 }
