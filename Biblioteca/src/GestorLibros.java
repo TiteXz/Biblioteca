@@ -11,13 +11,14 @@ public class GestorLibros {
 		
 		switch (opcion_menu) {
 		case Menu.INSERTAR_LIBRO:
-			Menu.mostrarMenuPrincipal();
+			
+			System.out.println("Has insertado un libro");
 			break;
 		case Menu.ELIMINAR_LIBRO:
-			Menu.mostrarMenuLibros();
+			System.out.println("Has eliminado un libro");
 			break;
 		case Menu.MOSTRAR_LIBRO:
-			Menu.mostrarMenuSocios();
+			System.out.println("Has modificado un libro");
 			break;
 		default:
 			System.out.println("Opcion incorrecta!");
