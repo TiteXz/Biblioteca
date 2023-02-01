@@ -9,10 +9,12 @@ public class GestorBiblioteca {
 		int opcion_menu;
 		
 
-		Menu.mostrarMenuPrincipal();
-		opcion_menu = Integer.parseInt(sc.nextLine());
+
 	
 		do {
+			Menu.mostrarMenuPrincipal();
+			opcion_menu = Integer.parseInt(sc.nextLine());
+			
 			switch (opcion_menu) {
 			case Menu.GESTIONAR_LIBROS:
 				Menu.mostrarMenuLibros();

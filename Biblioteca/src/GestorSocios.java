@@ -8,10 +8,12 @@ public class GestorSocios {
 		GestorBBDD gbd = new GestorBBDD();
 		Socio socio = new Socio();
 		
-		Menu.mostrarMenuLibros();
-		opcion_menu = Integer.parseInt(sc.nextLine());
+	
 		
 		do {
+			Menu.mostrarMenuLibros();
+			opcion_menu = Integer.parseInt(sc.nextLine());
+			
 		switch (opcion_menu) {
 		case Menu.INSERTAR_SOCIO:
 			gbd.insertarSocio(FormularioDeDatos.pedirDatosSocio(sc));;

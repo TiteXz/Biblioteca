@@ -10,10 +10,13 @@ public class GestorLibros {
 		Libro libro = new Libro();
 		
 		
-		Menu.mostrarMenuLibros();
-		opcion_menu = Integer.parseInt(sc.nextLine());
+
+		
 		
 		do {
+			Menu.mostrarMenuLibros();
+			opcion_menu = Integer.parseInt(sc.nextLine());
+			
 		switch (opcion_menu) {
 		case Menu.INSERTAR_LIBRO:
 			gBD.insertarLibros(libro);
