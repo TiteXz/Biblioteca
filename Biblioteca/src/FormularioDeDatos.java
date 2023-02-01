@@ -36,4 +36,52 @@ public class FormularioDeDatos {
 		
 		return id;
 	}
+	
+	public static Socio pedirDatosSocio(Scanner sc) {
+		Socio socio = new Socio();
+		
+		System.out.println("¿Cual es el nombre del socio?");
+		socio.setNombre(sc.nextLine());
+		System.out.println("¿Cual es el apellido del socio?");
+		socio.setApellido(sc.nextLine());
+		System.out.println("¿Cual es la direccion del socio?");
+		socio.setDireccion(sc.nextLine());
+		System.out.println("¿Cual es la provincia del socio?");
+		socio.setProvincia(sc.nextLine());
+		System.out.println("¿Cual es la poblacion del socio?");
+		socio.setPoblacion(sc.nextLine());
+		System.out.println("¿Cual es el dni del socio?");
+		socio.setDni(sc.nextLine());
+		
+		return socio;
+		
+	}
+	
+	public static Socio modificarDatosSocio(Socio socio, Scanner sc) {
+		
+		System.out.println("Introduce el id del socio que quieras modificar");
+		socio.setId(Integer.parseInt(sc.nextLine()));
+		System.out.println("Introduce el nuevo nombre del socio");
+		socio.setNombre(sc.nextLine());
+		System.out.println("Introduce el nuevo apellido del socio");
+		socio.setApellido(sc.nextLine());
+		System.out.println("Introduce la nueva direccion del socio");
+		socio.setDireccion(sc.nextLine());
+		System.out.println("Introduce la nueva provincia del socio");
+		socio.setProvincia(sc.nextLine());
+		System.out.println("Introduce la nueva poblacion del socio");
+		socio.setPoblacion(sc.nextLine());
+		System.out.println("Introduce el nuevo dni del socio");
+		socio.setDni(sc.nextLine());
+		
+		return socio;
+		
+	}
+	
+	public static int pedirIdSocio(Scanner sc) {
+		System.out.println("Cual es el id del socio");
+		int id = Integer.parseInt(sc.nextLine());
+		
+		return id;
+	}
 }
