@@ -8,19 +8,16 @@ public class GestorSocios {
 		Menu.mostrarMenuLibros();
 		opcion_menu = Integer.parseInt(sc.nextLine());
 		
+		do {
 		switch (opcion_menu) {
-		case Menu.GESTIONAR_LIBROS:
+		case Menu.VER_SOCIOS:
 			Menu.mostrarMenuPrincipal();
-			break;
-		case Menu.GESTIONAR_SOCIOS:
-			Menu.mostrarMenuLibros();
-			break;
-		case Menu.GESTIONAR_PRESTAMOS:
-			Menu.mostrarMenuSocios();
 			break;
 		default:
 			System.out.println("Opcion incorrecta!");
 		}
+		
+			}while(opcion_menu != Menu.SALIR);
 	
 	sc.close();
 	}
