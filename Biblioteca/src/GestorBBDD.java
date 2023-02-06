@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GestorBBDD extends Conector{
@@ -13,7 +14,7 @@ public class GestorBBDD extends Conector{
 			PreparedStatement pst = con.prepareStatement("INSERT INTO libros VALUES (null,?,?,?)");
 			pst.setString(1,libro.getTitulo());
 			pst.setString(2,libro.getAutor());
-			pst.setInt(1,libro.getNum_pag());
+			pst.setInt(3,libro.getNum_pag());
 			
 			pst.execute();
 		super.cerrar();	
@@ -61,6 +62,28 @@ public class GestorBBDD extends Conector{
 		super.cerrar();
 	}
 	
+	public ArrayList<Libro> getLibros() throws ClassNotFoundException, SQLException {
+		ArrayList<Libro>libros = new ArrayList<Libro>();
+		super.conectar();
+		String senteciaSelect= "SELECT * FROM libros";
+		PreparedStatement Pst =con.prepareStatement(senteciaSelect);
+		ResultSet resultado = Pst.executeQuery();
+		
+		while(resultado.next()) {
+		Libro libro = new Libro();
+		libro.setId(resultado.getInt("id"));
+		libro.setTitulo(resultado.getString("titulo"));
+		libro.setAutor(resultado.getString("autor"));
+		libro.setNum_pag(resultado.getInt("num_pag"));
+		
+		libros.add(libro);
+		
+		}
+		
+		super.cerrar();
+		return libros;
+	}
+	
 	public void insertarSocio(Socio socio) throws SQLException, ClassNotFoundException {
 		super.conectar();
 			PreparedStatement pst = con.prepareStatement("INSERT INTO socios VALUES (null,?,?,?,?,?,?)");
@@ -99,7 +122,6 @@ public class GestorBBDD extends Conector{
 		socio.setDni(resultado.getString("dni"));
 		
 	return socio;
-	
 	}
 	
 	public void modificarSocio() throws SQLException, ClassNotFoundException {
@@ -117,6 +139,30 @@ public class GestorBBDD extends Conector{
 		Pst.executeUpdate();
 		
 		super.cerrar();
+	}
+	
+	public ArrayList<Socio> getSocios() throws ClassNotFoundException, SQLException {
+		ArrayList<Socio>socios = new ArrayList<Socio>();
+		super.conectar();
+		String senteciaSelect= "SELECT * FROM socios";
+		PreparedStatement Pst =con.prepareStatement(senteciaSelect);
+		ResultSet resultado = Pst.executeQuery();
+		
+		while(resultado.next()) {
+		Socio socio = new Socio();
+		socio.setId(resultado.getInt("id"));
+		socio.setNombre(resultado.getString("nombre"));
+		socio.setApellido(resultado.getString("apellido"));
+		socio.setProvincia(resultado.getString("provincia"));
+		socio.setPoblacion(resultado.getString("poblacion"));
+		socio.setDni(resultado.getString("dni"));
+		
+		socios.add(socio);
+		
+		}
+		
+		super.cerrar();
+		return socios;
 	}
 	
 }
