@@ -1,4 +1,5 @@
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GestorSocios {
@@ -31,7 +32,7 @@ public class GestorSocios {
 			break;
 		case Menu.VER_SOCIOS:
 			gbd.conectar();
-			gbd.getSocio(FormularioDeDatos.pedirIdSocio(sc));
+			Visor.mostrarSocios(gbd.getSocios());
 			gbd.cerrar();
 			break;
 		default:
