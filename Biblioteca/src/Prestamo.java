@@ -1,6 +1,6 @@
 
 public class Prestamo {
-	
+
 	private int id;
 	private String id_socio;
 	private String fecha;
@@ -45,6 +45,10 @@ public class Prestamo {
 
 	public void setDevuelto(String devuelto) {
 		this.devuelto = devuelto;
+	}
+	@Override
+	public String toString() {
+		return "Prestamo " + id + ", id_socio=" + id_socio + ", fecha=" + fecha + ", devuelto=" + devuelto;
 	}
 	
 
