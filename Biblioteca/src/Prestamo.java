@@ -4,11 +4,11 @@ public class Prestamo {
 	private int id_libro;
 	private int id_socio;
 	private String fecha;
-	private String devuelto;
+	private Boolean devuelto;
 	
 	public Prestamo() {}
 	
-	public Prestamo(int id, int id_socio, String fecha, String devuelto) {
+	public Prestamo(int id, int id_socio, String fecha, Boolean devuelto) {
 		this.id_libro = id;
 		this.id_socio = id_socio;
 		this.fecha = fecha;
@@ -39,11 +39,11 @@ public class Prestamo {
 		this.fecha = fecha;
 	}
 
-	public String getDevuelto() {
+	public Boolean getDevuelto() {
 		return devuelto;
 	}
 
-	public void setDevuelto(String devuelto) {
+	public void setDevuelto(Boolean devuelto) {
 		this.devuelto = devuelto;
 	}
 	@Override
