@@ -1,14 +1,15 @@
+import java.sql.Date;
 
 public class Prestamo {
 
 	private int id_libro;
 	private int id_socio;
-	private String fecha;
+	private Date fecha;
 	private Boolean devuelto;
 	
 	public Prestamo() {}
 	
-	public Prestamo(int id, int id_socio, String fecha, Boolean devuelto) {
+	public Prestamo(int id, int id_socio, Date fecha, Boolean devuelto) {
 		this.id_libro = id;
 		this.id_socio = id_socio;
 		this.fecha = fecha;
@@ -31,11 +32,11 @@ public class Prestamo {
 		this.id_socio = id_socio;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
