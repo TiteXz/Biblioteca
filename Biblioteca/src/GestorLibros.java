@@ -17,20 +17,27 @@ public class GestorLibros {
 		opcion_menu = Integer.parseInt(sc.nextLine());
 		switch (opcion_menu) {
 		case Menu.INSERTAR_LIBRO:
-			FormularioDeDatos.pedirDatosLibro(sc);
-			gBD.insertarLibros(libro);
+			gBD.conectar();
+			gBD.insertarLibros(FormularioDeDatos.pedirDatosLibro(sc));
+			gBD.cerrar();
 			System.out.println("Has insertado un libro");
 			break;
 		case Menu.ELIMINAR_LIBRO:
+			gBD.conectar();
 			gBD.eliminarLibro(FormularioDeDatos.pedirIdLibro(sc));
+			gBD.cerrar();
 			System.out.println("Has eliminado un libro");
 			break;
 		case Menu.MODIFICAR_LIBRO:
+			gBD.conectar();
 			FormularioDeDatos.modificarDatosLibro(libro, sc);
+			gBD.cerrar();
 			System.out.println("Has modificado el libro");
 			break;
 		case Menu.MOSTRAR_LIBROS:
-			gBD.getLibro(FormularioDeDatos.pedirIdLibro(sc));
+			gBD.conectar();
+			Visor.mostrarLibros(gBD.getLibros());;
+			gBD.cerrar();
 			break;
 		default:
 			System.out.println("Opcion incorrecta!");
