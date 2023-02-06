@@ -1,7 +1,7 @@
 
 public class Prestamo {
 
-	private int id;
+	private int id_libro;
 	private String id_socio;
 	private String fecha;
 	private String devuelto;
@@ -9,18 +9,18 @@ public class Prestamo {
 	public Prestamo() {}
 	
 	public Prestamo(int id, String id_socio, String fecha, String devuelto) {
-		this.id = id;
+		this.id_libro = id;
 		this.id_socio = id_socio;
 		this.fecha = fecha;
 		this.devuelto = devuelto;
 	}
 
-	public int getId() {
-		return id;
+	public int getId_libro() {
+		return id_libro;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId_libro(int id) {
+		this.id_libro = id;
 	}
 
 	public String getId_socio() {
@@ -48,7 +48,7 @@ public class Prestamo {
 	}
 	@Override
 	public String toString() {
-		return "Prestamo " + id + ", id_socio=" + id_socio + ", fecha=" + fecha + ", devuelto=" + devuelto;
+		return "Prestamo " + id_libro + ", id_socio=" + id_socio + ", fecha=" + fecha + ", devuelto=" + devuelto;
 	}
 	
 
