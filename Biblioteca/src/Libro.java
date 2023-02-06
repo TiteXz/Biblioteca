@@ -1,6 +1,7 @@
 
 public class Libro {
 
+
 	private int id;
 	private String titulo;
 	private String autor;
@@ -47,4 +48,8 @@ public class Libro {
 		this.num_pag = num_pag;
 	}
 	
+	@Override
+	public String toString() {
+		return "Libro " + id + ", titulo=" + titulo + ", autor=" + autor + ", num_pag=" + num_pag;
+	}
 }
