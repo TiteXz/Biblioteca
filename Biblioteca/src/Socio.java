@@ -1,6 +1,8 @@
 
 public class Socio {
 
+	
+
 	private int id;
 	private String nombre;
 	private String apellido;
@@ -89,5 +91,10 @@ public class Socio {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-	
+	@Override
+	public String toString() {
+		return "Socio " + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
+				+ ", poblacion=" + poblacion + ", provincia=" + provincia + ", dni=" + dni ;
+	}
+
 }
