@@ -2,13 +2,13 @@
 public class Prestamo {
 
 	private int id_libro;
-	private String id_socio;
+	private int id_socio;
 	private String fecha;
 	private String devuelto;
 	
 	public Prestamo() {}
 	
-	public Prestamo(int id, String id_socio, String fecha, String devuelto) {
+	public Prestamo(int id, int id_socio, String fecha, String devuelto) {
 		this.id_libro = id;
 		this.id_socio = id_socio;
 		this.fecha = fecha;
@@ -23,11 +23,11 @@ public class Prestamo {
 		this.id_libro = id;
 	}
 
-	public String getId_socio() {
+	public int getId_socio() {
 		return id_socio;
 	}
 
-	public void setId_socio(String id_socio) {
+	public void setId_socio(int id_socio) {
 		this.id_socio = id_socio;
 	}
 
